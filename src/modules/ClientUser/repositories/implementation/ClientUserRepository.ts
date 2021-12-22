@@ -1,5 +1,5 @@
 import { ClientUser, PrismaClient } from "@prisma/client";
-import { ClientUserDTO } from "../../dto/ClientUserDTO";
+import { ClientUserDTO } from "../../dtos/ClientUserDTO";
 import { IClientUserRepository } from "../IClientUserRepository";
 
 export class ClientUserRepository implements IClientUserRepository {

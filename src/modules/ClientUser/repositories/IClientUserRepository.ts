@@ -1,5 +1,5 @@
 import { ClientUser } from "@prisma/client";
-import { ClientUserDTO } from "../dto/ClientUserDTO";
+import { ClientUserDTO } from "../dtos/ClientUserDTO";
 
 export interface IClientUserRepository {
   create(clientUserDTO: ClientUserDTO): Promise<void>;
