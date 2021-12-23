@@ -7,7 +7,7 @@
     "paths": {
       "@modules/*": ["modules/*"],
       "@shared/*": ["shared/*"],
-      "@routes/*": ["routes/*"]
+      "@infra/*": ["infra/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,

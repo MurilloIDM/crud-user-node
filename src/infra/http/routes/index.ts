@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { clientUserRouter } from "@routes/clientUser.routes";
+import { clientUserRouter } from "infra/http/routes/clientUser.routes";
 
 const router = Router();
 

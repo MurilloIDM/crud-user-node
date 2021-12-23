@@ -1,6 +1,7 @@
 import { ClientUserDTO } from "@modules/ClientUser/dtos/ClientUserDTO";
 import { IClientUserRepository } from "@modules/ClientUser/repositories/IClientUserRepository";
 import { genSalt, hash } from "bcrypt";
+import { HttpException } from "exceptions/HttpException";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
@@ -19,7 +20,7 @@ export class CreateClientUser {
     const clientUserAlreadyExists = await this.clientUserRepository.findByUsername(username);
 
     if (clientUserAlreadyExists) {
-      throw new Error("ClientUser already exists with username!");
+      throw new HttpException("ClientUser already exists with username!");
     }
 
     const saltHash = await genSalt(8);
