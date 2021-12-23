@@ -6,5 +6,6 @@ export interface IClientUserRepository {
   update(id: string, clientUserDTO: ClientUserDTO): Promise<void>;
   findAll(): Promise<ClientUser[]>;
   findById(id: string): Promise<ClientUser>;
+  findByUsername(username: string): Promise<ClientUser>;
   delete(id: string): Promise<void>;
 }

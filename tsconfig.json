@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2017",
     "module": "commonjs",
     "outDir": "./dist",
     "baseUrl": "./src/",
     "paths": {
       "@modules/*": ["modules/*"],
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
+      "@routes/*": ["routes/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,

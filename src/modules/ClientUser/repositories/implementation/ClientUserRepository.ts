@@ -54,6 +54,13 @@ export class ClientUserRepository implements IClientUserRepository {
     return clientUser;
   }
 
+  async findByUsername(username: string): Promise<ClientUser> {
+    const clientUser = await this.prisma.clientUser.findFirst({
+      where: { username }
+    });
+    return clientUser;
+  }
+
   async delete(id: string): Promise<void> {
     await this.prisma.clientUser.delete({ where: { id } });
   }
