@@ -20,7 +20,7 @@ export class UpdateClientUser {
     const clientUserAlreadyExistsWithId = await this.clientUserRepository.findById(id);
 
     if (!clientUserAlreadyExistsWithId) {
-      throw new HttpException("UserClient not found with ID!");
+      throw new HttpException("UserClient not found with this ID!", 404);
     }
 
     const clientUserAlreadyExistsWithUsername = await this.clientUserRepository.findByUsername(username);
