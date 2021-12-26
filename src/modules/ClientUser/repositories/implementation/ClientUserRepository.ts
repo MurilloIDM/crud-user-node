@@ -1,4 +1,5 @@
 import { ClientUser, PrismaClient } from "@prisma/client";
+import prisma from "lib/prisma";
 import { ClientUserDTO } from "../../dtos/ClientUserDTO";
 import { IClientUserRepository } from "../IClientUserRepository";
 
@@ -6,7 +7,7 @@ export class ClientUserRepository implements IClientUserRepository {
   private prisma: PrismaClient;
 
   constructor() {
-    this.prisma = new PrismaClient();
+    this.prisma = prisma;
   }
 
   async create({
