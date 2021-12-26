@@ -3,6 +3,7 @@ import { CreateClientUserController } from "@modules/ClientUser/useCases/CreateC
 import { UpdateClientUserController } from "@modules/ClientUser/useCases/UpdateClientUser/UpdateClientUserController";
 import { FindAllClientUserController } from "@modules/ClientUser/useCases/FindAllClientUser/FindAllClientUserController";
 import { FindByIdClientUserController } from "@modules/ClientUser/useCases/FindByIdClientUser/FindByIdClientUserController";
+import { DeleteClientUserController } from "@modules/ClientUser/useCases/DeleteClientUser/DeleteClientUserController";
 
 const clientUserRouter = Router();
 
@@ -10,10 +11,12 @@ const createClientUserController = new CreateClientUserController();
 const updateClientUserController = new UpdateClientUserController();
 const findAllClientUserController = new FindAllClientUserController();
 const findByIdClientUserController = new FindByIdClientUserController();
+const deleteClientUserController = new DeleteClientUserController();
 
 clientUserRouter.post("/", createClientUserController.handle);
 clientUserRouter.put("/:id", updateClientUserController.handle);
 clientUserRouter.get("/", findAllClientUserController.handle);
 clientUserRouter.get("/:id", findByIdClientUserController.handle);
+clientUserRouter.delete("/:id", deleteClientUserController.handle);
 
 export { clientUserRouter };
