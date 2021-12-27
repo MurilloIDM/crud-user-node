@@ -57,7 +57,12 @@ export class ClientUserRepository implements IClientUserRepository {
 
   async findByUsername(username: string): Promise<ClientUser> {
     const clientUser = await this.prisma.clientUser.findFirst({
-      where: { username }
+      where: {
+        username: {
+          equals: username,
+          mode: "insensitive"
+        }
+      }
     });
     return clientUser;
   }
