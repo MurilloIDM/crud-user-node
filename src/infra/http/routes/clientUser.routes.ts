@@ -4,6 +4,7 @@ import { UpdateClientUserController } from "@modules/ClientUser/useCases/UpdateC
 import { FindAllClientUserController } from "@modules/ClientUser/useCases/FindAllClientUser/FindAllClientUserController";
 import { FindByIdClientUserController } from "@modules/ClientUser/useCases/FindByIdClientUser/FindByIdClientUserController";
 import { DeleteClientUserController } from "@modules/ClientUser/useCases/DeleteClientUser/DeleteClientUserController";
+import { EnsureAuthenticated } from "../middlewares/EnsureAuthenticated";
 
 const clientUserRouter = Router();
 
@@ -12,6 +13,8 @@ const updateClientUserController = new UpdateClientUserController();
 const findAllClientUserController = new FindAllClientUserController();
 const findByIdClientUserController = new FindByIdClientUserController();
 const deleteClientUserController = new DeleteClientUserController();
+
+clientUserRouter.use(EnsureAuthenticated);
 
 clientUserRouter.post("/", createClientUserController.handle);
 clientUserRouter.put("/:id", updateClientUserController.handle);
