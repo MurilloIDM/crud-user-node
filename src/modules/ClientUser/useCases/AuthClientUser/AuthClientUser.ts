@@ -35,7 +35,7 @@ export class AuthClientUser {
     const token = sign(
       { username: usernameForToken },
       this.secretToken,
-      { subject: subjectForToken }
+      { subject: subjectForToken, expiresIn: '90m' }
     );
 
     return {
