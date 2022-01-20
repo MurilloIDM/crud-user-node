@@ -5,14 +5,21 @@
     "outDir": "./dist",
     "baseUrl": "./src/",
     "paths": {
-      "@modules/*": ["modules/*"],
-      "@shared/*": ["shared/*"],
-      "@infra/*": ["infra/*"]
+      "@modules/*": [
+        "modules/*"
+      ],
+      "@shared/*": [
+        "shared/*"
+      ],
+      "@infra/*": [
+        "infra/*"
+      ]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   }
 }

@@ -1,5 +1,5 @@
 import { ClientUserRepository } from "@modules/ClientUser/repositories/implementation/ClientUserRepository";
-import { HttpException } from "exceptions/HttpException";
+import { HttpException } from "../../../exceptions/HttpException";
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 
@@ -19,7 +19,7 @@ export const EnsureAuthenticated = async (
     throw new HttpException("Unauthorized access!", 401);
   }
 
-  const [prefix,token] = authorization.split(" ");
+  const [prefix, token] = authorization.split(" ");
 
   if (prefix !== "Bearer") {
     throw new HttpException("Unauthorized access!", 401);

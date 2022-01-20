@@ -1,15 +1,17 @@
+import { inject, injectable } from "tsyringe";
+import { genSalt, hash } from "bcrypt";
+
 import { ClientUserDTO } from "@modules/ClientUser/dtos/ClientUserDTO";
 import { IClientUserRepository } from "@modules/ClientUser/repositories/IClientUserRepository";
-import { genSalt, hash } from "bcrypt";
-import { HttpException } from "exceptions/HttpException";
-import { inject, injectable } from "tsyringe";
+
+import { HttpException } from "../../../../exceptions/HttpException";
 
 @injectable()
 export class CreateClientUser {
   constructor(
     @inject("ClientUserRepository")
     private readonly clientUserRepository: IClientUserRepository
-  ) {}
+  ) { }
 
   async execute({
     username,

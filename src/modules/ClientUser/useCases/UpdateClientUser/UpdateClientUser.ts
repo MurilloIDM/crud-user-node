@@ -1,7 +1,7 @@
 import { ClientUserDTO } from "@modules/ClientUser/dtos/ClientUserDTO";
 import { IClientUserRepository } from "@modules/ClientUser/repositories/IClientUserRepository";
 import { genSalt, hash } from "bcrypt";
-import { HttpException } from "exceptions/HttpException";
+import { HttpException } from "../../../../exceptions/HttpException";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
@@ -9,7 +9,7 @@ export class UpdateClientUser {
   constructor(
     @inject("ClientUserRepository")
     private readonly clientUserRepository: IClientUserRepository
-  ) {}
+  ) { }
 
   async execute(id: string, {
     username,
@@ -38,7 +38,7 @@ export class UpdateClientUser {
       username: username.toLowerCase(),
       password: passwordHash,
       firstName,
-      lastName, 
+      lastName,
     });
   }
 }

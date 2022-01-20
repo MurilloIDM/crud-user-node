@@ -1,5 +1,5 @@
 import { IClientUserRepository } from "@modules/ClientUser/repositories/IClientUserRepository";
-import { HttpException } from "exceptions/HttpException";
+import { HttpException } from "../../../../exceptions/HttpException";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
@@ -7,7 +7,7 @@ export class DeleteClientUser {
   constructor(
     @inject("ClientUserRepository")
     private readonly clientUserRepository: IClientUserRepository
-  ) {}
+  ) { }
 
   async execute(id: string): Promise<void> {
     const clientUserAlreadyExists = await this.clientUserRepository.findById(id);
