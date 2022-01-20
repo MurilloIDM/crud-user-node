@@ -1,10 +1,11 @@
+import { IClientUserRepository } from "@modules/ClientUser/repositories/IClientUserRepository";
 import { ClientUserRepositoryInMemory } from "@modules/ClientUser/repositories/in-memory/ClientUserRepositoryInMemory";
 import { compare } from "bcrypt";
 import { HttpException } from "../../../../exceptions/HttpException";
 import { CreateClientUser } from "./CreateClientUser";
 
 let createClientUser: CreateClientUser;
-let clientUserRepository: ClientUserRepositoryInMemory;
+let clientUserRepository: IClientUserRepository;
 
 describe("Create Client User", () => {
   beforeEach(() => {
@@ -27,7 +28,7 @@ describe("Create Client User", () => {
     expect(clientUserCreated).toHaveProperty("id");
   });
 
-  it("should not be able to create a client user with username existing", () => {
+  it("should not be able to create a client user with username existing", async () => {
     const execute = async () => {
       const clientUser = {
         username: "test.user",
@@ -40,8 +41,8 @@ describe("Create Client User", () => {
       await createClientUser.execute(clientUser);
     };
 
-    expect(execute).rejects.toBeInstanceOf(HttpException);
-    expect(execute).rejects.toEqual({
+    expect(async () => await execute()).rejects.toBeInstanceOf(HttpException);
+    expect(async () => await execute()).rejects.toEqual({
       statusCode: 400,
       message: "ClientUser already exists with username!",
     });
@@ -58,11 +59,8 @@ describe("Create Client User", () => {
     await createClientUser.execute(clientUser);
 
     const clientUserCreated = await clientUserRepository.findByUsername(clientUser.username);
-
     const validPassword = await compare(clientUser.password, clientUserCreated.password);
 
-    console.log(validPassword);
-
     expect(validPassword).toEqual(true);
-  })
+  });
 });
