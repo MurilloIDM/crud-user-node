@@ -2,6 +2,8 @@ import { IClientUserRepository } from "@modules/ClientUser/repositories/IClientU
 import { ClientUser } from "@prisma/client";
 import { inject, injectable } from "tsyringe";
 
+import { HttpException } from "../../../../exceptions/HttpException";
+
 @injectable()
 export class FindAllClientUser {
   constructor(
@@ -11,6 +13,10 @@ export class FindAllClientUser {
 
   async execute(): Promise<ClientUser[]> {
     const listClientUser = await this.clientUserRepository.findAll();
+
+    if (!listClientUser.length) {
+      throw new HttpException("No Content", 204);
+    }
 
     return listClientUser;
   }

@@ -41,8 +41,8 @@ describe("Create Client User", () => {
       await createClientUser.execute(clientUser);
     };
 
-    expect(async () => await execute()).rejects.toBeInstanceOf(HttpException);
-    expect(async () => await execute()).rejects.toEqual({
+    await expect(execute()).rejects.toBeInstanceOf(HttpException);
+    await expect(execute()).rejects.toEqual({
       statusCode: 400,
       message: "ClientUser already exists with username!",
     });

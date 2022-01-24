@@ -9,10 +9,6 @@ export class FindAllClientUserController {
 
     const listClientUser = await findAllClientUser.execute();
 
-    if (!listClientUser.length) {
-      return response.status(204).send();
-    }
-
     return response.json(listClientUser);
   }
 }
